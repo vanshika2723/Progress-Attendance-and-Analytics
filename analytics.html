@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+     <link rel="stylesheet" href="analytics.css">
+
+</head>
+<body>
+    <div class="page-container">
+        <header class="top-page">   
+            <div class="main-heading">
+                <div class="main-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                 <div>
+                <h1>Student Progress Analytics Dashboard</h1>
+                <p>Analytics and statistics of student progress.</p>
+            </div>
+            </div>
+            <div class="nav">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchBox" placeholder="Search Student, course..">
+
+                </div>
+                <button class="theme-btn" id="themeBtn">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button class="notify">
+                    <i class="fa-solid fa-bell"></i>
+                </button>
+
+                <div class="profile">
+                    <div class="profile-img">SK</div>
+                    <span>Sakshi Karan</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+            </div>
+           
+
+        </header>
+
+        <div class="stats">
+            <div class="stat-card user">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div><p>Total Student</p>
+                    <h3 id="totalStudents">0</h3>
+                    <small><i class="fa-solid fa-arrow-trend-up"></i></small>
+                </div>
+            </div>
+            <div class="stat-card atd">
+            <div class="stat-icon">
+                <i class="fa-regular fa-calendar-check"></i>
+            </div>
+                <div>
+                    <p>Avg Attendance</p>
+                    <h3 class="avg-atd">0%</h3>
+                    <small><i class="fa-solid fa-arrow-trend-up"></i></small>
+
+                </div>
+
+            </div>
+            <div class="stat-card pro">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <p>Avg Progress</p>
+                    <h3 class="avg-pro">0%
+
+                    </h3>
+                    <small><i class=" fa-solid fa-arrow-trend-up"></i></small>
+                </div>
+
+            </div>
+            <div class="stat-card course">
+                <div class="stat-icon">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                    <p>Completed Course</p>
+                    <h3 id="course">0</h3>
+                    <small>
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="add-student">
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <h3>Add Student</h3>
+                </div>
+            </div>
+            <form id="studentFrom">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" id="studentname" placeholder="Enter Student Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Course</label>
+                    <select id="studentCourse">
+                        <option>Frontend</option>
+                        <option>Backend</option>
+                        <option>React</option>
+                        <option>Java</option>
+                        <option>Python</option>
+                        <option>C++</option>
+                        <option>DSA</option>
+                        <option>AI/ML</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Attendance %</label>
+                    <input type="number" id="studentAtd" min="0" max="100" placeholder="80" required>
+                </div>
+                <div class="form-group">
+                    <label>Progress %</label>
+                    <input type="number" id="studentPro" min="0" max="100" placeholder="80" required>
+                </div>
+                <button type="submit" class="add-btn">Add</button>
+
+                <button type="button" class="delete-all-btn" id="deleteAllBtn">
+                    <i class="fa-solid fa-trash"></i>Remove All
+                </button>
+
+            </form>
+        </div>
+
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <h3>Student Learning Progress</h3>
+
+                    </div>
+                    <select id="progressType">
+                        <option value="progress">Overall Progress</option>
+
+                        <option value="attendance">Attendance</option>
+                    </select>
+                
+
+                </div>
+                <div class="chart-box">
+                    <canvas id="progressChart"></canvas>
+
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h3>Attendance & Progress Trend</h3>
+                    </div>
+                    <select id="tendFilter">
+                        <option>Last 6 months</option>
+                        <option>Last 3 months</option>
+                        <option>This Year</option>
+                    </select>
+                </div>
+                <div class="chart-box">
+                    <canvas id="trendChart"></canvas>
+                </div>
+
+            </div>
+            <div class="completion-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <h3>Course Completion Status</h3>
+                    </div>
+                </div>
+                <div class="copletion-data">
+                    <div class="circle">
+                        <canvas id="completionChart"></canvas>
+                        <div class="circle-text">
+                            <strong id="completionTotal">0</strong>
+                            <span>Students</span>
+                        </div>
+                    </div>
+                    <div class="copletion-list">
+                       <div>
+                        <span class="dot-completed"></span>
+                        <span>Completed</span>
+                        <strong id="completedValue">0%</strong>
+                       </div>
+
+                       <div>
+                        <span class="dot-progress"></span>
+                        <span>In Progress</span>
+                        <strong id="progressValue">0%</strong>
+                       </div>
+                       <div>
+                        <span class="dot-notStarted"></span>
+                        <span>Not Started</span>
+                        <strong id="notStartedValue">0%</strong>
+                       </div>
+                       <div>
+                        <span class="dot-dropped"></span>
+                        <span>Dropped</span>
+                        <strong id="droppedValue">0%</strong>
+                       </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="risk-card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <h3>Students At Risk</h3>
+                    </div>
+                </div>
+
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Student Name</th>
+                                    <th>Attendance</th>
+                                    <th>Progress</th>
+                                    <th>Status</th>
+                                    <th>Remove</th>
+                                </tr>
+
+                            </thead>
+                            <tbody id="statusTable"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+            
+         <div class="instructor-analysis">
+            <div class="card-header">
+               <div class="card-title">
+               <i class="fa-solid fa-chalkboard-user"></i>
+               <h3>Instructor Analysis</h3>
+        </div>
+
+    </div>
+        <div class="add-instructor">
+          <div class="card-header">
+            <div class="card-title">
+                <i class="fa-solid fa-user-plus"></i>
+                <h3>Add Instructor</h3>
+            </div>
+
+        </div>
+
+        <form id="instructorForm">
+            <div class="form-group">
+                <label for="instructorName"> Instructor Name</label>
+                <input type="text" id="instructorName" placeholder="Enter Instructor Name" required>
+            </div>
+           
+            <div class="form-group">
+                <label for="instructorCourse">Course of Instructor</label>
+
+                <select id="instructorCourse" required>
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="React">React</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="C++">C++</option>
+                    <option value="DSA">DSA</option>
+                    <option value="AI/ML">AI/ML</option>
+
+                </select>
+
+            </div>
+            
+            <button  type="submit"class="add-btn" id="addInstructorBtn">
+                <i class="fa-solid fa-plus"></i>
+             Add </button>
+
+            <button  type="button"  class="delete-all-btn"  id="deleteInstructorBtn" >
+                <i class="fa-solid fa-trash"></i>
+                Remove All </button>
+
+        </form>
+
+    </div>
+
+    <div class="instructor-filter">
+     <label for="instructorFilter"> Analysis Period </label>
+        <select id="instructorFilter">
+            <option value="month"> This Month </option>
+            <option value="3months"> Last 3 Months</option>
+            <option value="year"> This Year </option>
+        </select>
+
+    </div>
+
+    <div class="instructor-content">
+        <div class="instructor-info">
+            <div class="info-title">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Instructor</span>
+
+            </div>
+            <div class="instructor-profile">
+                <div class="instructor-img"  id="instructorImage">
+                </div>
+
+                <div>
+                    <h4 id="displayInstructorName"> No Instructor</h4>
+                    <p id="displayInstructorCourse"> No Course Selected </p>
+
+                </div>
+
+            </div>
+
+            <div class="instructor-details">
+                <div><span>Total Students</span>
+                  <strong id="instructorStudents">0</strong>
+
+                </div>
+
+                <div>
+                    <span> Assigned Courses</span>
+                    <strong id="assignedCourses">0</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="instructor-stats">
+            <div class="instructor-stat">
+                <div class="instructor-stat-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <span>Students</span>
+                    <strong id="instructorTotal">0</strong>
+
+                </div>
+
+            </div>
+
+            <div class="instructor-stat">
+
+                <div class="instructor-stat-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <div><span>Avg Attendance</span>
+
+                    <strong id="instructorAttendance">0%</strong>
+
+                </div>
+
+            </div>
+
+            <div class="instructor-stat">
+                <div class="instructor-stat-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div>
+                    <span> Avg Progress</span>
+                    <strong id="instructorProgress">0%</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="top-courses">
+            <div class="section-small-title">
+                <i class="fa-solid fa-chart-column"></i>
+                <h4>Course Performance</h4>
+
+            </div>
+
+            <div class="course-progress"id="courseProgress">
+                
+            </div>
+
+        </div>
+
+        <div class="quick-insights">
+            <div class="section-small-title">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h4>Quick Insights</h4>
+
+            </div>
+
+            <ul id="instructorInsights"></ul>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+  
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="analytics.js"></script>
+    
+</body>
+</html>
