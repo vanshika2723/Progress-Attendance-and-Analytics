@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LMMS - Attendance Management</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <h2>LMMS</h2>
+                <span>Learning Management</span>
+            </div>
+        </div>
+
+        <div class="menu-heading">MENU</div>
+
+        <a href="#" class="nav active">
+            <i class="fa-solid fa-calendar-check"></i>
+            Attendance
+        </a>
+
+        <a href="#" class="nav">
+            <i class="fa-solid fa-user-graduate"></i>
+            Students
+        </a>
+
+        <a href="#" class="nav">
+            <i class="fa-solid fa-book-open"></i>
+            Courses
+        </a>
+
+        <a href="#" class="nav">
+            <i class="fa-solid fa-chart-column"></i>
+            Reports
+        </a>
+
+        <div class="menu-heading">SYSTEM</div>
+
+        <a href="#" class="nav">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+        <div class="sidebar-bottom">
+
+            <div class="profile">
+                <div class="profile-avatar">SY</div>
+
+                <div>
+                    <strong>Sakshi Yadav</strong>
+                    <span>Attendance Admin</span>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div>
+                <p class="breadcrumb">
+                    LMMS / Attendance
+                </p>
+
+                <h1>Attendance Management</h1>
+
+                <p class="subtitle">
+                    Manage students and record daily attendance easily.
+                </p>
+            </div>
+
+            <div class="header-right">
+
+                <div class="date-display">
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <div>
+                        <span>Today</span>
+                        <strong id="currentDate"></strong>
+                    </div>
+                </div>
+
+                <button class="add-btn" id="openAddStudent">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Student
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- SUMMARY -->
+
+        <section class="summary">
+
+            <div class="summary-card">
+
+                <div class="summary-icon blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+                    <span>Total Students</span>
+                    <h2 id="totalStudents">0</h2>
+                    <small>Students registered</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon green">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+                    <span>Present Today</span>
+                    <h2 id="presentStudents">0</h2>
+                    <small id="presentPercent">0% of students</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon red">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+
+                <div>
+                    <span>Absent Today</span>
+                    <h2 id="absentStudents">0</h2>
+                    <small id="absentPercent">0% of students</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon purple">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div>
+                    <span>Attendance Rate</span>
+                    <h2 id="attendanceRate">0%</h2>
+                    <small>Today's performance</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="quick-section">
+
+            <div>
+                <h2>Quick Actions</h2>
+                <p>Choose what you want to do</p>
+            </div>
+
+            <div class="quick-actions">
+
+                <button class="quick-card" id="quickAdd">
+
+                    <div class="quick-icon purple">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <div>
+                        <strong>Add Student</strong>
+                        <span>Add a new student</span>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+                <button class="quick-card" id="markAllPresent">
+
+                    <div class="quick-icon green">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>Mark All Present</strong>
+                        <span>Mark today's attendance</span>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+                <button class="quick-card" id="viewHistory">
+
+                    <div class="quick-icon blue">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+
+                    <div>
+                        <strong>Attendance History</strong>
+                        <span>View previous records</span>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDENT ATTENDANCE -->
+
+        <section class="attendance-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Today's Attendance</h2>
+                    <p>Mark and manage attendance of your students.</p>
+                </div>
+
+                <button class="export-btn" id="exportBtn">
+                    <i class="fa-solid fa-file-export"></i>
+                    Export CSV
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="tools">
+
+                <div class="search">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="Search by student name or roll number..."
+                    >
+
+                </div>
+
+                <select id="courseFilter">
+
+                    <option value="all">All Courses</option>
+                    <option value="B.Tech CSE">B.Tech CSE</option>
+                    <option value="B.Tech AIML">B.Tech AIML</option>
+                    <option value="B.Tech IT">B.Tech IT</option>
+
+                </select>
+
+                <select id="statusFilter">
+
+                    <option value="all">All Status</option>
+                    <option value="present">Present</option>
+                    <option value="absent">Absent</option>
+                    <option value="pending">Not Marked</option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>STUDENT</th>
+                            <th>ROLL NUMBER</th>
+                            <th>COURSE</th>
+                            <th>OVERALL ATTENDANCE</th>
+                            <th>TODAY</th>
+                            <th>ACTION</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="studentTable">
+
+                    </tbody>
+
+                </table>
+
+
+                <div class="empty" id="emptyState">
+
+                    <div>
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                    <h3>No students found</h3>
+
+                    <p>Add a student to start managing attendance.</p>
+
+                    <button id="emptyAdd">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Student
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ADD STUDENT MODAL -->
+
+<div class="modal" id="studentModal">
+
+    <div class="modal-box">
+
+        <button class="close" id="closeModal">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-header">
+
+            <div class="modal-icon">
+                <i class="fa-solid fa-user-plus"></i>
+            </div>
+
+            <div>
+                <h2>Add New Student</h2>
+                <p>Enter student details below.</p>
+            </div>
+
+        </div>
+
+
+        <form id="studentForm">
+
+            <div class="form-row">
+
+                <div class="field">
+
+                    <label>Student Name</label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="e.g. Rahul Kumar"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>Roll Number</label>
+
+                    <input
+                        type="text"
+                        id="rollNumber"
+                        placeholder="e.g. CS-109"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Course</label>
+
+                <select id="course" required>
+
+                    <option value="">Select Course</option>
+                    <option value="B.Tech CSE">B.Tech CSE</option>
+                    <option value="B.Tech AIML">B.Tech AIML</option>
+                    <option value="B.Tech IT">B.Tech IT</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="field">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="student@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>Phone</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="9876543210"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-buttons">
+
+                <button type="button" class="cancel" id="cancelBtn">
+                    Cancel
+                </button>
+
+                <button type="submit" class="save">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Add Student
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- HISTORY MODAL -->
+
+<div class="modal" id="historyModal">
+
+    <div class="modal-box history-box">
+
+        <button class="close" id="closeHistory">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-header">
+
+            <div class="modal-icon blue">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+
+            <div>
+                <h2>Attendance History</h2>
+                <p>Previous attendance records.</p>
+            </div>
+
+        </div>
+
+        <div class="history-list">
+
+            <div class="history-item">
+                <span>28 Sep 2026</span>
+                <strong>85% Attendance</strong>
+            </div>
+
+            <div class="history-item">
+                <span>27 Sep 2026</span>
+                <strong>88% Attendance</strong>
+            </div>
+
+            <div class="history-item">
+                <span>26 Sep 2026</span>
+                <strong>82% Attendance</strong>
+            </div>
+
+            <div class="history-item">
+                <span>25 Sep 2026</span>
+                <strong>91% Attendance</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span>Success</span>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
