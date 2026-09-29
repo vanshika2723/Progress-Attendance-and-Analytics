@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Progress & Attendance Reports</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">LMS</div>
+
+            <div>
+                <h2>EduTrack</h2>
+                <span>Learning Management</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="#" class="nav-link active">
+                📊 Dashboard
+            </a>
+
+            <a href="#progress" class="nav-link">
+                📈 Progress Reports
+            </a>
+
+            <a href="#attendance" class="nav-link">
+                📅 Attendance Reports
+            </a>
+
+            <a href="#performance" class="nav-link">
+                ⭐ Performance
+            </a>
+
+            <a href="#reports" class="nav-link">
+                📄 Generated Reports
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+            <p>Frontend Project</p>
+            <small>Reports Module</small>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div>
+                <h1>Progress & Attendance Reports</h1>
+
+                <p>
+                    Monitor student learning progress and attendance.
+                </p>
+            </div>
+
+            <div class="profile">
+                <div class="profile-avatar">
+                    SA
+                </div>
+
+                <div>
+                    <strong>Reports Developer</strong>
+                    <small>Team 4</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             SUMMARY CARDS
+        ========================== -->
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    👨‍🎓
+                </div>
+
+                <div>
+                    <span>Total Students</span>
+                    <h2 id="totalStudents">5</h2>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    📅
+                </div>
+
+                <div>
+                    <span>Average Attendance</span>
+                    <h2 id="averageAttendance">84.8%</h2>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    📈
+                </div>
+
+                <div>
+                    <span>Average Progress</span>
+                    <h2 id="averageProgress">77.6%</h2>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-icon">
+                    📄
+                </div>
+
+                <div>
+                    <span>Reports Generated</span>
+                    <h2 id="reportsGenerated">12</h2>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             STUDENT REPORTS
+        ========================== -->
+
+        <section class="report-panel">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Student Reports</h2>
+
+                    <p>
+                        Search and view student report information.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="filters">
+
+                <input
+                    type="text"
+                    id="studentSearch"
+                    placeholder="Search student or ID..."
+                >
+
+
+                <select id="departmentFilter">
+
+                    <option value="all">
+                        All Departments
+                    </option>
+
+                    <option value="computer-science">
+                        Computer Science
+                    </option>
+
+                    <option value="science">
+                        Science
+                    </option>
+
+                    <option value="commerce">
+                        Commerce
+                    </option>
+
+                </select>
+
+
+                <select id="reportType">
+
+                    <option value="all">
+                        All Reports
+                    </option>
+
+                    <option value="progress">
+                        Progress Report
+                    </option>
+
+                    <option value="attendance">
+                        Attendance Report
+                    </option>
+
+                    <option value="performance">
+                        Performance Report
+                    </option>
+
+                </select>
+
+
+                <button
+                    id="searchBtn"
+                    class="primary-btn"
+                >
+                    Search
+                </button>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Student</th>
+
+                            <th>ID</th>
+
+                            <th>Department</th>
+
+                            <th>Progress</th>
+
+                            <th>Attendance</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTableBody">
+
+                        <!-- JavaScript will add students here -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROGRESS REPORT
+        ========================== -->
+
+        <section
+            class="report-grid"
+            id="progress"
+        >
+
+            <div class="report-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Learning Progress</h2>
+
+                        <p>
+                            Overall course completion.
+                        </p>
+                    </div>
+
+                    <span class="percentage">
+                        77.6%
+                    </span>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>Web Development</span>
+                        <strong>85%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:85%"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>Python Programming</span>
+                        <strong>76%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:76%"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>Database Systems</span>
+                        <strong>68%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:68%"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <div class="progress-item">
+
+                    <div class="progress-label">
+                        <span>Computer Networks</span>
+                        <strong>81%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div
+                            class="progress-fill"
+                            style="width:81%"
+                        ></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK SUMMARY -->
+
+            <div class="report-card">
+
+                <h2>Progress Summary</h2>
+
+                <div class="stat-list">
+
+                    <div class="stat-row">
+                        <span>Excellent</span>
+                        <strong>1 Student</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Good</span>
+                        <strong>2 Students</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Average</span>
+                        <strong>1 Student</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Needs Attention</span>
+                        <strong>1 Student</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ATTENDANCE REPORT
+        ========================== -->
+
+        <section
+            class="report-panel"
+            id="attendance"
+        >
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Attendance Report</h2>
+
+                    <p>
+                        Monthly student attendance overview.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="attendance-grid">
+
+                <div class="attendance-box">
+
+                    <span>Present</span>
+                    <strong>432</strong>
+
+                </div>
+
+
+                <div class="attendance-box">
+
+                    <span>Absent</span>
+                    <strong>48</strong>
+
+                </div>
+
+
+                <div class="attendance-box">
+
+                    <span>Average</span>
+                    <strong>84.8%</strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Month</th>
+                            <th>Working Days</th>
+                            <th>Present</th>
+                            <th>Absent</th>
+                            <th>Attendance</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+                            <td>January</td>
+                            <td>22</td>
+                            <td>20</td>
+                            <td>2</td>
+                            <td>91%</td>
+                        </tr>
+
+                        <tr>
+                            <td>February</td>
+                            <td>20</td>
+                            <td>17</td>
+                            <td>3</td>
+                            <td>85%</td>
+                        </tr>
+
+                        <tr>
+                            <td>March</td>
+                            <td>23</td>
+                            <td>20</td>
+                            <td>3</td>
+                            <td>87%</td>
+                        </tr>
+
+                        <tr>
+                            <td>April</td>
+                            <td>21</td>
+                            <td>17</td>
+                            <td>4</td>
+                            <td>81%</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PERFORMANCE
+        ========================== -->
+
+        <section
+            class="report-grid"
+            id="performance"
+        >
+
+            <div class="report-card">
+
+                <h2>Overall Performance</h2>
+
+                <p>
+                    Student performance based on progress
+                    and attendance.
+                </p>
+
+
+                <div class="performance-score">
+                    82%
+                </div>
+
+
+                <span class="performance-label">
+                    Overall Performance
+                </span>
+
+            </div>
+
+
+            <div class="report-card">
+
+                <h2>Report Information</h2>
+
+                <div class="stat-list">
+
+                    <div class="stat-row">
+                        <span>Report Type</span>
+                        <strong>Student Performance</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Data Source</span>
+                        <strong>Sample Data</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Module</span>
+                        <strong>LMS Reports</strong>
+                    </div>
+
+                    <div class="stat-row">
+                        <span>Team</span>
+                        <strong>Team 4</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GENERATED REPORTS
+        ========================== -->
+
+        <section
+            class="report-panel"
+            id="reports"
+        >
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Generated Reports</h2>
+
+                    <p>
+                        Manage student report actions.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="generated-list">
+
+                <div class="generated-item">
+
+                    <div>
+                        <strong>
+                            Student Progress Report
+                        </strong>
+
+                        <small>
+                            Sample generated report
+                        </small>
+                    </div>
+
+                    <button class="secondary-btn">
+                        View
+                    </button>
+
+                </div>
+
+
+                <div class="generated-item">
+
+                    <div>
+                        <strong>
+                            Attendance Summary
+                        </strong>
+
+                        <small>
+                            Monthly attendance report
+                        </small>
+                    </div>
+
+                    <button class="secondary-btn">
+                        View
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         STUDENT MODAL
+    ========================== -->
+
+    <div
+        class="modal"
+        id="studentModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                id="modalClose"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-header">
+
+                <div class="modal-avatar">
+                    SA
+                </div>
+
+                <div>
+
+                    <span>Student Report</span>
+
+                    <h2 id="modalStudentName">
+                        Student Name
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-details">
+
+                <div class="modal-detail">
+                    <span>Student ID</span>
+                    <strong id="modalStudentId">
+                        STU001
+                    </strong>
+                </div>
+
+
+                <div class="modal-detail">
+                    <span>Department</span>
+                    <strong id="modalDepartment">
+                        Computer Science
+                    </strong>
+                </div>
+
+
+                <div class="modal-detail">
+                    <span>Progress</span>
+                    <strong id="modalProgress">
+                        85%
+                    </strong>
+                </div>
+
+
+                <div class="modal-detail">
+                    <span>Attendance</span>
+                    <strong id="modalAttendance">
+                        92%
+                    </strong>
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="secondary-btn"
+                    id="modalPrintBtn"
+                >
+                    🖨️ Print
+                </button>
+
+                <button
+                    class="primary-btn"
+                    id="modalGenerateBtn"
+                >
+                    📄 Generate Report
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
