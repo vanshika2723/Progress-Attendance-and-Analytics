@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Progress | LMS</title>
+
+    <link rel="stylesheet" href="progress.css">
+   
+</head>
+
+<body>
+
+  <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">L</div>
+
+            <div class="logo-text">
+                <h2>LMS</h2>
+                <span>Learning Management</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html" class="menu-link">
+                <span class="menu-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="progress.html" class="menu-link active">
+                <span class="menu-icon">↗</span>
+                <span>Progress Management</span>
+            </a>
+
+            <a href="ATTENDANCE.html" class="menu-link">
+                <span class="menu-icon">◷</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="learning-progress.html.html" class="menu-link">
+                <span class="menu-icon">▣</span>
+                <span>Learning Progress</span>
+            </a>
+
+            <a href="#" class="menu-link">
+                <span class="menu-icon">▥</span>
+                <span>Analytics</span>
+            </a>
+
+            <a href="index.html" class="menu-link">
+                <span class="menu-icon">▤</span>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="module-title">
+                <span class="status-dot"></span>
+                Progress, Attendance & Analytics
+            </div>
+
+            <p>Team Project</p>
+            <small>5 Members</small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+       
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <section class="page-header">
+
+            <div>
+                <span class="page-label">PROGRESS MANAGEMENT</span>
+
+                <h1>Student Progress</h1>
+
+                <p>
+                    Track and manage student learning progress across all courses.
+                </p>
+            </div>
+
+            <button class="add-progress-btn" onclick="openAddProgressModal()">
+                <span>+</span>
+                Add Progress
+            </button>
+
+        </section>
+
+
+        <!-- ================= FILTER AREA ================= -->
+
+        <section class="filter-card">
+
+            <div class="filter-group search-group">
+
+                <label>Search Student</label>
+
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        type="text"
+                        id="studentSearch"
+                        placeholder="Search by student name or ID..."
+                        onkeyup="filterStudents()"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="courseFilter">Course</label>
+
+                <select id="courseFilter" onchange="filterStudents()">
+
+                    <option value="all">All Courses</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="React.js">React.js</option>
+                    <option value="Node.js & Express">Node.js</option>
+                    <option value="MongoDB">MongoDB</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="statusFilter">Progress Status</label>
+
+                <select id="statusFilter" onchange="filterStudents()">
+
+                    <option value="all">All Status</option>
+                    <option value="Completed">Completed</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Not Started">Not Started</option>
+
+                </select>
+
+            </div>
+
+
+            <button class="reset-btn" onclick="resetFilters()">
+                Reset
+            </button>
+
+        </section>
+
+
+        <!-- ================= SUMMARY CARDS ================= -->
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+
+                <div class="summary-icon students">
+                    👥
+                </div>
+
+                <div class="summary-content">
+                    <span>Total Students</span>
+                    <h2>125</h2>
+                    <small>Active students</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon completed">
+                    ✓
+                </div>
+
+                <div class="summary-content">
+                    <span>Completed</span>
+                    <h2>68</h2>
+                    <small>Students completed</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon progress">
+                    ↗
+                </div>
+
+                <div class="summary-content">
+                    <span>In Progress</span>
+                    <h2>42</h2>
+                    <small>Currently learning</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-icon not-started">
+                    ○
+                </div>
+
+                <div class="summary-content">
+                    <span>Not Started</span>
+                    <h2>15</h2>
+                    <small>Yet to begin</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STUDENT TABLE ================= -->
+
+        <section class="content-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Student Progress Overview</h2>
+
+                    <p>
+                        Course-wise progress of students
+                    </p>
+                </div>
+
+                <button class="export-btn" onclick="exportReport()">
+                    Export Report
+                    <span>↓</span>
+                </button>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table class="progress-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Student</th>
+                            <th>Course</th>
+                            <th>Progress</th>
+                            <th>Completed</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="studentTableBody">
+
+                        <!-- STUDENT 1 -->
+
+                        <tr
+                            data-student="Priya Sharma"
+                            data-id="STU001"
+                            data-course="Web Development"
+                            data-status="Completed"
+                            data-progress="96"
+                        >
+
+                            <td>
+
+                                <div class="student-cell">
+
+                                    <div class="student-avatar purple">
+                                        PS
+                                    </div>
+
+                                    <div>
+                                        <strong>Priya Sharma</strong>
+                                        <span>ID: STU001</span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Web Development
+                            </td>
+
+                            <td>
+
+                                <div class="progress-cell">
+
+                                    <div class="progress-top">
+                                        <strong>96%</strong>
+                                    </div>
+
+                                    <div class="progress-bar">
+                                        <span style="width: 96%;"></span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                24 / 25
+                            </td>
+
+                            <td>
+                                <span class="status completed">
+                                    Completed
+                                </span>
+                            </td>
+
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewStudent('Priya Sharma','STU001','Web Development','96','24 / 25','Completed')"
+                                >
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <!-- STUDENT 2 -->
+
+                        <tr
+                            data-student="Rohan Verma"
+                            data-id="STU002"
+                            data-course="React.js"
+                            data-status="In Progress"
+                            data-progress="82"
+                        >
+
+                            <td>
+
+                                <div class="student-cell">
+
+                                    <div class="student-avatar blue">
+                                        RV
+                                    </div>
+
+                                    <div>
+                                        <strong>Rohan Verma</strong>
+                                        <span>ID: STU002</span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                React.js
+                            </td>
+
+                            <td>
+
+                                <div class="progress-cell">
+
+                                    <div class="progress-top">
+                                        <strong>82%</strong>
+                                    </div>
+
+                                    <div class="progress-bar">
+                                        <span style="width: 82%;"></span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                18 / 22
+                            </td>
+
+                            <td>
+                                <span class="status in-progress">
+                                    In Progress
+                                </span>
+                            </td>
+
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewStudent('Rohan Verma','STU002','React.js','82','18 / 22','In Progress')"
+                                >
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <!-- STUDENT 3 -->
+
+                        <tr
+                            data-student="Neha Singh"
+                            data-id="STU003"
+                            data-course="Node.js & Express"
+                            data-status="In Progress"
+                            data-progress="74"
+                        >
+
+                            <td>
+
+                                <div class="student-cell">
+
+                                    <div class="student-avatar green">
+                                        NS
+                                    </div>
+
+                                    <div>
+                                        <strong>Neha Singh</strong>
+                                        <span>ID: STU003</span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Node.js & Express
+                            </td>
+
+                            <td>
+
+                                <div class="progress-cell">
+
+                                    <div class="progress-top">
+                                        <strong>74%</strong>
+                                    </div>
+
+                                    <div class="progress-bar">
+                                        <span style="width: 74%;"></span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                15 / 20
+                            </td>
+
+                            <td>
+                                <span class="status in-progress">
+                                    In Progress
+                                </span>
+                            </td>
+
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewStudent('Neha Singh','STU003','Node.js & Express','74','15 / 20','In Progress')"
+                                >
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <!-- STUDENT 4 -->
+
+                        <tr
+                            data-student="Aarav Patel"
+                            data-id="STU004"
+                            data-course="MongoDB"
+                            data-status="In Progress"
+                            data-progress="63"
+                        >
+
+                            <td>
+
+                                <div class="student-cell">
+
+                                    <div class="student-avatar orange">
+                                        AP
+                                    </div>
+
+                                    <div>
+                                        <strong>Aarav Patel</strong>
+                                        <span>ID: STU004</span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                MongoDB
+                            </td>
+
+                            <td>
+
+                                <div class="progress-cell">
+
+                                    <div class="progress-top">
+                                        <strong>63%</strong>
+                                    </div>
+
+                                    <div class="progress-bar">
+                                        <span style="width: 63%;"></span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                12 / 19
+                            </td>
+
+                            <td>
+                                <span class="status in-progress">
+                                    In Progress
+                                </span>
+                            </td>
+
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewStudent('Aarav Patel','STU004','MongoDB','63','12 / 19','In Progress')"
+                                >
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+
+                        <!-- STUDENT 5 -->
+
+                        <tr
+                            data-student="Simran Gupta"
+                            data-id="STU005"
+                            data-course="Web Development"
+                            data-status="Not Started"
+                            data-progress="18"
+                        >
+
+                            <td>
+
+                                <div class="student-cell">
+
+                                    <div class="student-avatar pink">
+                                        SG
+                                    </div>
+
+                                    <div>
+                                        <strong>Simran Gupta</strong>
+                                        <span>ID: STU005</span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Web Development
+                            </td>
+
+                            <td>
+
+                                <div class="progress-cell">
+
+                                    <div class="progress-top">
+                                        <strong>18%</strong>
+                                    </div>
+
+                                    <div class="progress-bar">
+                                        <span style="width: 18%;"></span>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                4 / 22
+                            </td>
+
+                            <td>
+                                <span class="status not-started">
+                                    Not Started
+                                </span>
+                            </td>
+
+                            <td>
+                                <button
+                                    class="view-btn"
+                                    onclick="viewStudent('Simran Gupta','STU005','Web Development','18','4 / 22','Not Started')"
+                                >
+                                    View
+                                </button>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- NO RESULT -->
+
+            <div class="no-result" id="noResult">
+
+                <div>⌕</div>
+
+                <h3>No students found</h3>
+
+                <p>
+                    Try changing your search or filters.
+                </p>
+
+            </div>
+
+
+            <div class="table-footer">
+
+                <span>
+                    Showing <strong id="visibleCount">5</strong> of 125 students
+                </span>
+
+                <div class="pagination">
+
+                    <button disabled>‹</button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <span>...</span>
+                    <button>25</button>
+                    <button>›</button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LOWER SECTION ================= -->
+
+        <section class="bottom-grid">
+
+
+            <!-- PROGRESS DISTRIBUTION -->
+
+            <div class="content-card distribution-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Progress Distribution</h2>
+
+                        <p>
+                            Current Students
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="distribution-content">
+
+                    <div class="donut-chart">
+
+                        <div class="donut-inner">
+                            <strong>125</strong>
+                            <span>Students</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="distribution-list">
+
+                        <div class="distribution-item">
+
+                            <div>
+                                <span class="legend completed-dot"></span>
+                                <span>Completed</span>
+                            </div>
+
+                            <strong>68%</strong>
+
+                        </div>
+
+
+                        <div class="distribution-item">
+
+                            <div>
+                                <span class="legend progress-dot"></span>
+                                <span>In Progress</span>
+                            </div>
+
+                            <strong>42%</strong>
+
+                        </div>
+
+
+                        <div class="distribution-item">
+
+                            <div>
+                                <span class="legend not-started-dot"></span>
+                                <span>Not Started</span>
+                            </div>
+
+                            <strong>15%</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AVERAGE PROGRESS -->
+
+            <div class="content-card average-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Average Progress</h2>
+
+                        <p>
+                            All Courses
+                        </p>
+                    </div>
+
+                    <span class="average-icon">↗</span>
+
+                </div>
+
+
+                <div class="average-content">
+
+                    <div class="average-number">
+                        78%
+                    </div>
+
+                    <p>
+                        Average student progress
+                    </p>
+
+                    <div class="average-change">
+                        <span>↗ +8.4%</span>
+                        compared to last month
+                    </div>
+
+                    <div class="average-progress">
+
+                        <div class="average-progress-top">
+                            <span>Overall progress</span>
+                            <strong>78%</strong>
+                        </div>
+
+                        <div class="progress-bar large">
+                            <span style="width: 78%;"></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ================= EXTRA INFORMATION ================= -->
+
+        <section class="extra-grid">
+
+
+            <!-- RECENT UPDATES -->
+
+            <div class="content-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Recent Progress Updates</h2>
+                        <p>Latest student activity</p>
+                    </div>
+
+                    <button class="text-btn">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon completed-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>Priya Sharma completed Web Development</strong>
+                            <span>Progress reached 96%</span>
+                        </div>
+
+                        <time>2h ago</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon progress-icon">
+                            ↗
+                        </div>
+
+                        <div>
+                            <strong>Rohan Verma updated React.js progress</strong>
+                            <span>Progress increased to 82%</span>
+                        </div>
+
+                        <time>4h ago</time>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon progress-icon">
+                            ↗
+                        </div>
+
+                        <div>
+                            <strong>Neha Singh continued Node.js</strong>
+                            <span>15 lessons completed</span>
+                        </div>
+
+                        <time>5h ago</time>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="content-card quick-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Quick Actions</h2>
+                        <p>Manage student progress</p>
+                    </div>
+
+                </div>
+
+
+                <div class="quick-actions">
+
+                    <button onclick="openAddProgressModal()">
+                        <span class="quick-icon">+</span>
+                        <div>
+                            <strong>Add Progress</strong>
+                            <small>Update student progress</small>
+                        </div>
+                        <span>›</span>
+                    </button>
+
+
+                    <button onclick="exportReport()">
+                        <span class="quick-icon">↓</span>
+                        <div>
+                            <strong>Export Report</strong>
+                            <small>Download progress report</small>
+                        </div>
+                        <span>›</span>
+                    </button>
+
+
+                    <button onclick="window.location.href='analytics.html'">
+                        <span class="quick-icon">▥</span>
+                        <div>
+                            <strong>View Analytics</strong>
+                            <small>Check detailed statistics</small>
+                        </div>
+                        <span>›</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= ADD PROGRESS MODAL ================= -->
+
+    <div class="modal-overlay" id="addProgressModal">
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Add Student Progress</h2>
+                    <p>Enter the latest progress details.</p>
+                </div>
+
+                <button
+                    class="modal-close"
+                    onclick="closeAddProgressModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form onsubmit="addProgress(event)">
+
+                <div class="form-group">
+
+                    <label for="addStudent">
+                        Student
+                    </label>
+
+                    <input
+                        type="text"
+                        id="addStudent"
+                        placeholder="Enter student name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="addStudentId">
+                        Student ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="addStudentId"
+                        placeholder="Example: STU006"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="addCourse">
+                        Course
+                    </label>
+
+                    <select id="addCourse" required>
+
+                        <option value="">
+                            Select course
+                        </option>
+
+                        <option value="Web Development">
+                            Web Development
+                        </option>
+
+                        <option value="React.js">
+                            React.js
+                        </option>
+
+                        <option value="Node.js & Express">
+                            Node.js & Express
+                        </option>
+
+                        <option value="MongoDB">
+                            MongoDB
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+    <label for="progressInput">
+        Progress %
+    </label>
+
+    <input
+        type="number"
+        id="progressInput"
+        min="0"
+        max="100"
+        placeholder="0 - 100"
+        required
+    >
+
+</div>
+
+
+                    <div class="form-group">
+
+                        <label for="addStatus">
+                            Status
+                        </label>
+
+                        <select id="addStatus">
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                            <option value="In Progress">
+                                In Progress
+                            </option>
+
+                            <option value="Not Started">
+                                Not Started
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeAddProgressModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Progress
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= VIEW STUDENT MODAL ================= -->
+
+    <div class="modal-overlay" id="studentModal">
+
+        <div class="modal student-modal">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Student Progress</h2>
+                    <p>Detailed progress information</p>
+                </div>
+
+                <button
+                    class="modal-close"
+                    onclick="closeStudentModal()"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="student-detail">
+
+                <div class="student-detail-top">
+
+                    <div
+                        class="large-avatar"
+                        id="modalAvatar"
+                    >
+                        PS
+                    </div>
+
+                    <div>
+                        <h3 id="modalStudentName">
+                            Priya Sharma
+                        </h3>
+
+                        <span id="modalStudentId">
+                            ID: STU001
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="detail-grid">
+
+                    <div class="detail-box">
+                        <span>Course</span>
+                        <strong id="modalCourse">
+                            Web Development
+                        </strong>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Status</span>
+                        <strong id="modalStatus">
+                            Completed
+                        </strong>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Completed</span>
+                        <strong id="modalCompleted">
+                            24 / 25
+                        </strong>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Progress</span>
+                        <strong id="modalProgress">
+                            96%
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="modal-progress-section">
+
+                    <div class="modal-progress-top">
+
+                        <span>Overall Progress</span>
+
+                        <strong id="modalProgressText">
+                            96%
+                        </strong>
+
+                    </div>
+
+                    <div class="progress-bar large">
+                        <span
+                            id="modalProgressBar"
+                            style="width: 96%;"
+                        ></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    class="cancel-btn"
+                    onclick="closeStudentModal()"
+                >
+                    Close
+                </button>
+
+                <button
+                    class="save-btn"
+                    onclick="closeStudentModal(); openAddProgressModal();"
+                >
+                    Update Progress
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="progress.js"></script>
+
+</body>
+</html>

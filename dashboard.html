@@ -1,0 +1,862 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LMS Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">L</div>
+
+            <div class="logo-text">
+                <h2>LMS</h2>
+                <span>Learning Management</span>
+            </div>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="dashboard.html" class="menu-link active">
+                <span class="menu-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="progress.html" class="menu-link">
+                <span class="menu-icon">↗</span>
+                <span>Progress Management</span>
+            </a>
+
+            <a href="ATTENDANCE.html" class="menu-link">
+                <span class="menu-icon">◷</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="learning-progress.html.html" class="menu-link">
+                <span class="menu-icon">▣</span>
+                <span>Learning Progress</span>
+            </a>
+
+            <a href="#" class="menu-link">
+                <span class="menu-icon">▥</span>
+                <span>Analytics</span>
+            </a>
+
+            <a href="index.html" class="menu-link">
+                <span class="menu-icon">▤</span>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="module-title">
+                <span class="status-dot"></span>
+                Progress, Attendance & Analytics
+            </div>
+
+            <p>Team Project</p>
+            <small>5 Members</small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main-content">
+
+        <!-- ================= TOP BAR ================= -->
+
+        <header class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+                <p>Progress Management Overview</p>
+            </div>
+
+            <div class="user-area">
+
+                <button class="notification-btn">
+                    🔔
+                </button>
+
+                <div class="user">
+
+                    <div class="avatar">
+                        V
+                    </div>
+
+                    <div>
+                        <strong>Vanshika Khandelwal</strong>
+                        <small>Progress Lead</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome-card">
+
+            <div class="welcome-content">
+
+                <span class="welcome-small">👋 Welcome back,</span>
+
+                <h1>Vanshika Khandelwal!</h1>
+
+                <p>
+                    Here's your complete progress overview.
+                    Keep going, you're doing great!
+                </p>
+
+                <div class="welcome-tags">
+
+                    <span>Learn</span>
+                    <span>Practice</span>
+                    <span>Achieve</span>
+
+                </div>
+
+            </div>
+
+            <div class="welcome-icon">
+                👩🏻‍💻
+            </div>
+
+        </section>
+
+
+        <!-- ================= STAT CARDS ================= -->
+
+        <section class="summary-cards">
+
+            <div class="summary-card">
+
+                <div class="card-icon blue">
+                    📚
+                </div>
+
+                <div>
+                    <span>Total Courses</span>
+                    <h2>26</h2>
+                    <small>22 completed • 4 in progress</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-icon purple">
+                    📄
+                </div>
+
+                <div>
+                    <span>Total Assignments</span>
+                    <h2>48</h2>
+                    <small>38 submitted • 7 pending</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-icon green">
+                    👥
+                </div>
+
+                <div>
+                    <span>Total Students</span>
+                    <h2>125</h2>
+                    <small>98 active • 27 inactive</small>
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="card-icon orange">
+                    📅
+                </div>
+
+                <div>
+                    <span>Attendance Rate</span>
+                    <h2>92%</h2>
+                    <small>Present: 115 • Absent: 10</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= COURSE PROGRESS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <h2>Course Progress</h2>
+                    <p>Track student progress across courses</p>
+                </div>
+
+                <a href="learning.html.html" class="view-link">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="course-table">
+
+                <div class="course-header">
+                    <span>Course</span>
+                    <span>Progress</span>
+                    <span>Status</span>
+                    <span>Enrolled Students</span>
+                </div>
+
+
+                <div class="course-row">
+
+                    <div class="course-name">
+
+                        <div class="course-icon web">
+                            &lt;/&gt;
+                        </div>
+
+                        <div>
+                            <strong>Web Development</strong>
+                            <small>HTML • CSS • JavaScript</small>
+                        </div>
+
+                    </div>
+
+                    <div class="course-progress">
+
+                        <div class="progress-line">
+                            <div style="width:85%"></div>
+                        </div>
+
+                        <strong>85%</strong>
+
+                    </div>
+
+                    <span class="status in-progress">
+                        In Progress
+                    </span>
+
+                    <strong>28</strong>
+
+                </div>
+
+
+                <div class="course-row">
+
+                    <div class="course-name">
+
+                        <div class="course-icon react">
+                            ⚛
+                        </div>
+
+                        <div>
+                            <strong>React.js</strong>
+                            <small>Components • Hooks • Router</small>
+                        </div>
+
+                    </div>
+
+                    <div class="course-progress">
+
+                        <div class="progress-line">
+                            <div style="width:72%"></div>
+                        </div>
+
+                        <strong>72%</strong>
+
+                    </div>
+
+                    <span class="status in-progress">
+                        In Progress
+                    </span>
+
+                    <strong>24</strong>
+
+                </div>
+
+
+                <div class="course-row">
+
+                    <div class="course-name">
+
+                        <div class="course-icon node">
+                            JS
+                        </div>
+
+                        <div>
+                            <strong>Node.js & Express</strong>
+                            <small>APIs • Middleware • Auth</small>
+                        </div>
+
+                    </div>
+
+                    <div class="course-progress">
+
+                        <div class="progress-line">
+                            <div style="width:60%"></div>
+                        </div>
+
+                        <strong>60%</strong>
+
+                    </div>
+
+                    <span class="status in-progress">
+                        In Progress
+                    </span>
+
+                    <strong>20</strong>
+
+                </div>
+
+
+                <div class="course-row">
+
+                    <div class="course-name">
+
+                        <div class="course-icon mongo">
+                            ◆
+                        </div>
+
+                        <div>
+                            <strong>MongoDB</strong>
+                            <small>Database • CRUD • Aggregation</small>
+                        </div>
+
+                    </div>
+
+                    <div class="course-progress">
+
+                        <div class="progress-line">
+                            <div style="width:40%"></div>
+                        </div>
+
+                        <strong>40%</strong>
+
+                    </div>
+
+                    <span class="status in-progress">
+                        In Progress
+                    </span>
+
+                    <strong>15</strong>
+
+                </div>
+
+
+                <div class="course-row">
+
+                    <div class="course-name">
+
+                        <div class="course-icon dsa">
+                            &lt;/&gt;
+                        </div>
+
+                        <div>
+                            <strong>DSA</strong>
+                            <small>Arrays • Linked List • Trees</small>
+                        </div>
+
+                    </div>
+
+                    <div class="course-progress">
+
+                        <div class="progress-line">
+                            <div style="width:25%"></div>
+                        </div>
+
+                        <strong>25%</strong>
+
+                    </div>
+
+                    <span class="status not-started">
+                        Not Started
+                    </span>
+
+                    <strong>10</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= THREE CARDS ================= -->
+
+        <section class="dashboard-grid three-columns">
+
+
+            <!-- Overall Progress -->
+
+            <div class="dashboard-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h2>Overall Progress</h2>
+                        <p>Course completion status</p>
+                    </div>
+
+                </div>
+
+
+                <div class="overall-progress">
+
+                    <div class="circle-progress">
+
+                        <div class="circle-inner">
+                            <strong>68%</strong>
+                            <span>Completed</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mini-stats">
+
+                    <div>
+                        <strong>17</strong>
+                        <span>Completed</span>
+                    </div>
+
+                    <div>
+                        <strong>6</strong>
+                        <span>In Progress</span>
+                    </div>
+
+                    <div>
+                        <strong>3</strong>
+                        <span>Not Started</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Attendance -->
+
+            <div class="dashboard-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h2>Attendance Overview</h2>
+                        <p>Current attendance</p>
+                    </div>
+
+                    <a href="ATTENDANCE.html" class="view-link">
+                        View Details →
+                    </a>
+
+                </div>
+
+
+                <div class="attendance-number">
+                    <strong>92%</strong>
+                    <span>Present</span>
+                </div>
+
+
+                <div class="attendance-bar">
+                    <div style="width:92%"></div>
+                </div>
+
+
+                <div class="attendance-stats">
+
+                    <div>
+                        <strong>115</strong>
+                        <span>Present</span>
+                    </div>
+
+                    <div>
+                        <strong>10</strong>
+                        <span>Absent</span>
+                    </div>
+
+                    <div>
+                        <strong>0</strong>
+                        <span>Leave</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Assignment Progress -->
+
+            <div class="dashboard-card">
+
+                <div class="card-heading">
+
+                    <div>
+                        <h2>Assignment Progress</h2>
+                        <p>Submission overview</p>
+                    </div>
+
+                    <a href="learning.html.html" class="view-link">
+                        View All →
+                    </a>
+
+                </div>
+
+
+                <div class="assignment-progress">
+
+                    <strong>79%</strong>
+
+                    <span>Completed</span>
+
+                </div>
+
+
+                <div class="assignment-bar">
+                    <div style="width:79%"></div>
+                </div>
+
+
+                <div class="assignment-stats">
+
+                    <div>
+                        <strong>38</strong>
+                        <span>Submitted</span>
+                    </div>
+
+                    <div>
+                        <strong>7</strong>
+                        <span>Pending</span>
+                    </div>
+
+                    <div>
+                        <strong>3</strong>
+                        <span>Graded</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <h2>Quick Actions</h2>
+                    <p>Frequently used actions</p>
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a href="learning.html.html">
+                    <span>📖</span>
+                    <div>
+                        <strong>View All Courses</strong>
+                        <small>Explore available courses</small>
+                    </div>
+                    <b>→</b>
+                </a>
+
+
+                <a href="progress.html">
+                    <span>📊</span>
+                    <div>
+                        <strong>View Progress Report</strong>
+                        <small>Check detailed progress</small>
+                    </div>
+                    <b>→</b>
+                </a>
+
+
+                <a href="index.html">
+                    <span>⬇</span>
+                    <div>
+                        <strong>Download Reports</strong>
+                        <small>Export progress reports</small>
+                    </div>
+                    <b>→</b>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LEARNING STATISTICS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <h2>Learning Statistics</h2>
+                    <p>Overall learning activity</p>
+                </div>
+
+                <a href="learning.html.html" class="view-link">
+                    View Details →
+                </a>
+
+            </div>
+
+
+            <div class="learning-stats">
+
+                <div>
+                    <span class="stat-symbol">📖</span>
+                    <strong>124</strong>
+                    <small>Lessons Completed</small>
+                </div>
+
+                <div>
+                    <span class="stat-symbol">◷</span>
+                    <strong>48h</strong>
+                    <small>Study Time</small>
+                </div>
+
+                <div>
+                    <span class="stat-symbol">📈</span>
+                    <strong>4.8</strong>
+                    <small>Avg. Score</small>
+                </div>
+
+                <div>
+                    <span class="stat-symbol">▥</span>
+                    <strong>68%</strong>
+                    <small>Course Progress</small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RECENT ACTIVITY ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <h2>Recent Activity</h2>
+                    <p>Latest learning activities</p>
+                </div>
+
+                <a href="#" class="view-link">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="activity-list">
+
+                <div class="activity-item">
+
+                    <div class="activity-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Completed lesson: HTML Basics</strong>
+                        <small>2 hours ago</small>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon purple">
+                        ◈
+                    </div>
+
+                    <div>
+                        <strong>Submitted assignment: React Hooks</strong>
+                        <small>4 hours ago</small>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon orange">
+                        📅
+                    </div>
+
+                    <div>
+                        <strong>Attended: Web Development Class</strong>
+                        <small>5 hours ago</small>
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon blue">
+                        ★
+                    </div>
+
+                    <div>
+                        <strong>Achieved score: 85% (DSA Quiz)</strong>
+                        <small>1 day ago</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TOP STUDENTS ================= -->
+
+        <section class="dashboard-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <h2>Top Performing Students</h2>
+                    <p>Students with highest course performance</p>
+                </div>
+
+                <a href="#" class="view-link">
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div class="students-table">
+
+                <div class="student-header">
+                    <span>Name</span>
+                    <span>Courses Completed</span>
+                    <span>Avg. Score</span>
+                </div>
+
+
+                <div class="student-row">
+
+                    <div class="student-name">
+                        <div class="student-avatar female">
+                            👩🏻
+                        </div>
+                        <strong>Priya Sharma</strong>
+                    </div>
+
+                    <strong>5</strong>
+
+                    <strong>96%</strong>
+
+                </div>
+
+
+                <div class="student-row">
+
+                    <div class="student-name">
+                        <div class="student-avatar male">
+                            👨🏻
+                        </div>
+                        <strong>Rohan Verma</strong>
+                    </div>
+
+                    <strong>4</strong>
+
+                    <strong>92%</strong>
+
+                </div>
+
+
+                <div class="student-row">
+
+                    <div class="student-name">
+                        <div class="student-avatar female">
+                            👩🏻
+                        </div>
+                        <strong>Neha Singh</strong>
+                    </div>
+
+                    <strong>4</strong>
+
+                    <strong>88%</strong>
+
+                </div>
+
+
+                <div class="student-row">
+
+                    <div class="student-name">
+                        <div class="student-avatar male">
+                            👨🏻
+                        </div>
+                        <strong>Aarav Patel</strong>
+                    </div>
+
+                    <strong>3</strong>
+
+                    <strong>85%</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+            Progress, Attendance & Analytics · LMS
+        </footer>
+
+    </main>
+
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
